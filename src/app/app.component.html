@@ -1,0 +1,23 @@
+<mat-checkbox [checked]="isChecked" #toggleDetails (change)="onChange($event)"
+  >Subscribe</mat-checkbox
+>
+<div @slide *ngIf="toggleDetails.checked">
+  <p>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum eum
+    quisquam aspernatur, ut vitae odio ullam doloribus? Vero quod asperiores
+    nihil ducimus est provident facere quos aspernatur ipsa non laborum
+    blanditiis animi, eos nostrum reprehenderit placeat ipsam quisquam
+    repellendus dicta voluptatibus. Harum quam eum vero autem tempore! Quasi
+    fugiat accusamus non eos quas dolores? Possimus quas velit eum consectetur
+    numquam consequuntur vel ipsam magni doloribus, sunt adipisci iure, optio
+    dolorem eveniet accusamus obcaecati quia. Veritatis natus est minima?
+    Obcaecati corporis tempora ut ea cupiditate, a id quibusdam voluptatem
+    vitae, ipsa maiores rerum est nostrum impedit ipsum repellat aspernatur
+    quaerat numquam.
+  </p>
+</div>
+<hr />
+<mat-radio-group>
+  <mat-radio-button value="0">Option 1</mat-radio-button>
+  <mat-radio-button value="1" checked="true">Option 2</mat-radio-button>
+</mat-radio-group>
