@@ -1,23 +1,176 @@
-<mat-checkbox [checked]="isChecked" #toggleDetails (change)="onChange($event)"
-  >Subscribe</mat-checkbox
->
-<div @slide *ngIf="toggleDetails.checked">
-  <p>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum eum
-    quisquam aspernatur, ut vitae odio ullam doloribus? Vero quod asperiores
-    nihil ducimus est provident facere quos aspernatur ipsa non laborum
-    blanditiis animi, eos nostrum reprehenderit placeat ipsam quisquam
-    repellendus dicta voluptatibus. Harum quam eum vero autem tempore! Quasi
-    fugiat accusamus non eos quas dolores? Possimus quas velit eum consectetur
-    numquam consequuntur vel ipsam magni doloribus, sunt adipisci iure, optio
-    dolorem eveniet accusamus obcaecati quia. Veritatis natus est minima?
-    Obcaecati corporis tempora ut ea cupiditate, a id quibusdam voluptatem
-    vitae, ipsa maiores rerum est nostrum impedit ipsum repellat aspernatur
-    quaerat numquam.
-  </p>
+<div class="body">
+  <mat-checkbox [checked]="isChecked" #toggleDetails (change)="onChange($event)"
+    >Subscribe</mat-checkbox
+  >
+  <div @slide *ngIf="toggleDetails.checked">
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum eum
+      quisquam aspernatur, ut vitae odio ullam doloribus? Vero quod asperiores
+      nihil ducimus est provident facere quos aspernatur ipsa non laborum
+      blanditiis animi, eos nostrum reprehenderit placeat ipsam quisquam
+      repellendus dicta voluptatibus. Harum quam eum vero autem tempore! Quasi
+      fugiat accusamus non eos quas dolores? Possimus quas velit eum consectetur
+      numquam consequuntur vel ipsam magni doloribus, sunt adipisci iure, optio
+      dolorem eveniet accusamus obcaecati quia. Veritatis natus est minima?
+      Obcaecati corporis tempora ut ea cupiditate, a id quibusdam voluptatem
+      vitae, ipsa maiores rerum est nostrum impedit ipsum repellat aspernatur
+      quaerat numquam.
+    </p>
+    <hr />
+  </div>
+  <mat-radio-group [(ngModel)]="favorite">
+    <mat-radio-button
+      (change)="onChoose($event)"
+      class="flex"
+      *ngFor="let lang of languages"
+      [value]="lang"
+      >{{ lang }}</mat-radio-button
+    >
+  </mat-radio-group>
+  <p>You choosed : {{ favorite }}</p>
+  <hr />
+  <mat-form-field>
+    <mat-label>Favorite Color</mat-label>
+    <mat-select [(ngModel)]="color">
+      <mat-option *ngFor="let col of colors" [value]="col.name">
+        {{ col.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <p>You choosed: {{ color }}</p>
+  <hr />
+  <mat-form-field appearance="outline" class="example-full-width">
+    <mat-label>Username</mat-label>
+    <span matPrefix
+      ><i class="material-icons">
+        school
+      </i></span
+    >
+    <input
+      type="text"
+      name="username"
+      [(ngModel)]="username"
+      matInput
+      required
+    />
+    <mat-hint>Type a unique username.</mat-hint>
+    <span matSuffix
+      ><i class="material-icons">
+        person
+      </i></span
+    >
+    <mat-error>Username is <strong>required!</strong></mat-error>
+  </mat-form-field>
+  <p>Username: {{ username }}</p>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>Comment</mat-label>
+    <textarea cdkTextareaAutosize matInput></textarea>
+  </mat-form-field>
+  <hr />
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      placeholder="Choose a date"
+      [matDatepicker]="picker"
+      disabled
+      [min]="min"
+      [max]="max"
+      [(ngModel)]="dateChoosed"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker [disabled]="false"></mat-datepicker>
+  </mat-form-field>
+  <br />
+  <mat-icon>calendar_today</mat-icon>{{ dateChoosed | date }}
+  <br />
+  <div>
+    <button mat-button>Mat-Button</button>
+    <hr />
+    <button mat-raised-button color="accent">mat-raised-button</button>
+    <button mat-raised-button color="warn">mat-raised-button</button>
+    <button mat-raised-button color="primary">mat-raised-button</button>
+    <hr />
+    <button mat-flat-button>mat-flat-button</button>
+    <hr />
+    <button mat-stroked-button>mat-stroked-button</button>
+    <hr />
+    <button mat-icon-button>mat-icon-button</button>
+    <hr />
+    <button mat-fab><mat-icon>check</mat-icon></button>
+    <hr />
+    <button mat-mini-fab>mat-mini-fab</button>
+    <hr />
+  </div>
+  <div>
+    <mat-chip-list>
+      <mat-chip
+        color="accent"
+        (click)="categorySelecteed(cat)"
+        *ngFor="let cat of categories"
+        [selected]="cat.selected"
+      >
+        {{ cat.name }}
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+  <hr />
+  <div>
+    <mat-chip-list class="mat-chip-list-stacked">
+      <mat-chip
+        color="warn"
+        (click)="gen.selected = !gen.selected"
+        *ngFor="let gen of genders"
+        [selected]="gen.selected"
+      >
+        {{ gen }}
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+  <div>
+    <ul>
+      <li *ngFor="let course of courses">
+        {{ course }}
+      </li>
+    </ul>
+    <mat-progress-spinner *ngIf="isLoading" mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+  <hr />
+  <span
+    matTooltip="my tooltip"
+    matTooltipClass="example-tooltip-red"
+    matTooltipPosition="above"
+    matTooltipShowDelay="500"
+    matTooltipHideDelay="1000"
+  >
+    Some Text Here...
+  </span>
+  <br />
+  <mat-tab-group>
+    <mat-tab label="Tab 1">Content 1</mat-tab>
+    <mat-tab label="Tab 2">Content 2</mat-tab>
+    <mat-tab label="Tab 3">Content 3</mat-tab>
+  </mat-tab-group>
+
+  <br />
+  <button mat-raised-button color="primary" (click)="openDialog()">
+    Open Dialog
+  </button>
+  <br /><br /><br /><br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
 </div>
-<hr />
-<mat-radio-group>
-  <mat-radio-button value="0">Option 1</mat-radio-button>
-  <mat-radio-button value="1" checked="true">Option 2</mat-radio-button>
-</mat-radio-group>

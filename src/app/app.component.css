@@ -1,0 +1,13 @@
+.flex {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+}
+
+mat-icon {
+  color: purple;
+}
+
+.example-tooltip-red {
+  background: #b71c1c;
+}
