@@ -1,9 +1,10 @@
-<div>
-  <mat-form-field>
-    <input matInput [(ngModel)]="animal" />
-  </mat-form-field>
-  <div mat-dialog-actions>
-    <button mat-button mat-dialog-close>OK</button>
-    <button mat-button mat-dialog-close cdkFocusInitial>Cancel</button>
-  </div>
-</div>
+<h2 mat-dialog-title>Title</h2>
+
+<mat-dialog-content>Content</mat-dialog-content>
+<mat-form-field>
+  <input matInput [(ngModel)]="title" />
+</mat-form-field>
+<mat-dialog-actions align="center">
+  <button mat-raised-button (click)="onClick()">OK</button>
+  <button mat-raised-button [mat-dialog-close]="Cancel">Cancel</button>
+</mat-dialog-actions>

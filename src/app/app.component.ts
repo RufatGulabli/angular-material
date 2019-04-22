@@ -50,10 +50,7 @@ export class AppComponent implements OnInit {
 
   courses: string[];
 
-  constructor(
-    private dataService: DataService,
-    private dialogPanel: MatDialog
-  ) {}
+  constructor(private dataService: DataService, private dialog: MatDialog) {}
 
   ngOnInit() {
     setTimeout(x => {
@@ -78,13 +75,15 @@ export class AppComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialogPanel.open(DialogPanelComponent, {
-      data: {
-        animal: this.animal
-      }
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-    });
+    this.dialog
+      .open(DialogPanelComponent, {
+        data: {
+          animal: "this.animal"
+        }
+      })
+      .afterClosed()
+      .subscribe(result => {
+        console.log(result);
+      });
   }
 }

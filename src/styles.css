@@ -2,6 +2,4 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-* {
-  font-family: "Arial";
-}
+@import "https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300";
